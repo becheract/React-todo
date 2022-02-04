@@ -1,0 +1,73 @@
+@import "./../main.scss";
+
+header {
+    background-color: $bg-colour;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    .header-container{
+        background-color: $sec-colour;
+        margin: 20px;
+        padding: 10px;
+        border-radius: 10px;
+        box-shadow: 5px 10px $box-shadow;
+        width: 50vw;
+
+    }
+    .title {
+        font-size: 4rem;
+        font-family: $font;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color:$font-colour;
+    }
+
+    .author{
+        font-family: $sub-font;
+        font-size: 1.5rem;
+    }
+    @media only screen and (max-width: 700px) {
+        width: 100vw;
+
+        .header-container{
+            width: 100vw;
+        }
+        .title {
+            font-size: 3rem;
+
+        }
+    
+        .author{
+    
+            font-size: 2rem;
+        }
+      }
+
+      @media only screen and (max-width: 330px) {
+        .title {
+            font-size: 2.5rem;
+
+        }
+    
+        .author{
+    
+            font-size: 1rem;
+        }
+
+        svg{
+            width: 10vw;
+            height: 10vh;
+
+        }
+      }
+
+      @media only screen and (max-width: 265px) {
+        svg{
+            display: none;
+        }
+
+      }
+}

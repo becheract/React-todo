@@ -1,0 +1,30 @@
+@import "./../../main.scss";
+
+.task-container{
+    background-color: $bg-colour;
+    border-radius: 10px;
+
+    width: 80vw;
+    height: auto;
+    margin: 10px;
+    
+    .task-idiv-container{
+        width: 100%;
+        margin: 10px;
+    }
+
+    .task-title{
+        font-family: $font;
+    }
+
+    .task-btn {
+        border-radius: 10px;
+        background-color: #6b705c;
+        width: 100px;
+        height: 40px;
+        border: none;
+        font-family: $sub-font;
+        color: white;
+        margin: 10px;
+    }
+}

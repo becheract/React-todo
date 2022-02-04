@@ -1,0 +1,33 @@
+@import "./../main.scss";
+
+.Tasks-container {
+    background-color: $tasks-colour;
+
+
+
+    .SubTitle {
+        margin: 0;
+        padding: 20px;
+        font-family: $font;
+        text-align: center;
+    }
+
+    .item-container {
+        display: grid;
+        align-items: center;
+        justify-content: center;
+    
+    }
+    
+    .Tasks-btn {
+        border-radius: 10px;
+        background-color: #e01e37;
+        width: 200px;
+        height: 50px;
+        border: none;
+        font-family: $sub-font;
+        color: white;
+        margin: 10px;
+    }
+
+}
