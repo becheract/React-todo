@@ -1,6 +1,6 @@
 import './Task.scss'
 import {MdTaskAlt} from 'react-icons/md'
-import { useEffect } from 'react';
+
 function Task(props) {
 
 	const handleStatusClick = () => {
