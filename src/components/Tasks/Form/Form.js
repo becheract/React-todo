@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import uuid from 'react-uuid';
 export default class Form extends Component {
 //setting state
 constructor(props) {
@@ -27,9 +27,22 @@ handleDone = e => {
 
 handleSubmit = e => {
     e.preventDefault();
+
     if(this.state.description === "")  {
         this.setState({ errorMessage : alert("Enter Description")})
+    }else{
+       const newTask = {
+       id: uuid(),
+       description: this.state.description,
+       done: this.state.done
+    };
+    console.log(newTask);
+    this.props.addTask(newTask);
+
+    this.setState({description : ''});
+    this.setState({done : false });
     }
+
 };
 
   render() {
@@ -37,7 +50,7 @@ handleSubmit = e => {
       <div>
           <h2>Add a new task</h2>
           <div>
-              {this.state.errorMessage ? 'invalid entry: enter a description' : 'Enter a description'}
+              {this.state.description === '' ? 'invalid entry: enter a description' : 'description'}
           </div>
           <form onSubmit={this.handleSubmit}>
             <input type="text" htmlFor="Description" maxLength="150" value={this.state.description} onChange={this.handleDescription}/>

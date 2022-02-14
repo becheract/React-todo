@@ -68,6 +68,13 @@ class Tasks extends React.Component {
 		this.setState({ tasks : updatedTasks });
 	}
 
+	addTask = (t) => {
+		this.setState({ tasks : [...this.state.tasks, t],
+		}, () => {
+			console.log(t);
+		});
+	}
+
 	render() {
 		return (
 			<>
@@ -87,7 +94,7 @@ class Tasks extends React.Component {
 				</div>
 				<hr />
 				<button className="Tasks-btn" onClick={this.handleClearTasks}>Clear Tasks</button>
-				<Form/>
+				<Form addTask={this.addTask}/>
 			</div>
 			</>
 		);
