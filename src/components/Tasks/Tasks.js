@@ -2,7 +2,7 @@ import React from "react";
 import uuid from 'react-uuid';
 import Task from "./Task/Task";
 import './Tasks.scss'
-
+import Form from '.././Tasks/Form/Form';
 
 class Tasks extends React.Component {
 	constructor(props) {
@@ -87,6 +87,7 @@ class Tasks extends React.Component {
 				</div>
 				<hr />
 				<button className="Tasks-btn" onClick={this.handleClearTasks}>Clear Tasks</button>
+				<Form/>
 			</div>
 			</>
 		);
