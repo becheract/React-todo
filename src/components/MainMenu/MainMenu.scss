@@ -1,0 +1,14 @@
+@import "./../main.scss";
+
+.nav{
+    background: $sec-colour;
+    text-align: center;
+    padding: 10px;
+    .links{
+        font-family: $font;
+        margin: 5px;
+        text-decoration: none;
+        color: $font-colour;
+    }
+
+}

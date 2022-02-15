@@ -2,12 +2,21 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import Help from './components/Help/Help'
 import reportWebVitals from './reportWebVitals';
 import './index.scss'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 ReactDOM.render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<App />} />
+      <Route path="/help" element={<Help />} />
+    </Routes>
+
+    </BrowserRouter>
+  </React.StrictMode>
+,
   document.getElementById('root')
 );
 
