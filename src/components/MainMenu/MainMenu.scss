@@ -1,14 +1,28 @@
 @import "./../main.scss";
 
 .nav{
+    display: flex;
     background: $sec-colour;
-    text-align: center;
+    justify-content: center;
     padding: 10px;
     .links{
         font-family: $font;
         margin: 5px;
         text-decoration: none;
         color: $font-colour;
+        font-size: 25px;
+        border-radius: 10px;
+    }
+
+    .links:hover{
+        transition: 0.25s;
+        font-size: 220%;
+
+    }
+
+    .links:hover:after{
+        transition: 0.25s;
+
     }
 
 }

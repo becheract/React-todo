@@ -1,0 +1,49 @@
+@import ".././../main.scss";
+
+.form-container{
+    display: flex;
+    flex-direction: column;
+
+    background-color: $bg-colour;
+    .task-h2{
+        background: $sec-colour;
+        font-family: $font;
+        display: flex;
+        margin: 0%;
+        padding: 20px;
+    }
+
+    .form-btn{
+        border-radius: 10px;
+        background-color: #6b705c;
+        width: 100px;
+        height: 40px;
+        border: none;
+        font-family: $sub-font;
+        color: white;
+        margin: 10px;
+    }
+
+    .form-drop{
+        border-radius: 10px;
+        background-color: #6b705c;
+        width: 120px;
+        height: 40px;
+        border: none;
+        font-family: $sub-font;
+        color: white;
+        margin: 10px;
+    }
+
+    input{
+        border-radius: 10px;
+        width: 190px;
+        height: 40px;
+        border: none;
+        font-family: $sub-font;
+        color: rgb(0, 0, 0);
+        margin: 10px;
+        padding: 5px;
+    }
+
+}   

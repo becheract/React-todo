@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import uuid from 'react-uuid';
+import './Form.scss'
 export default class Form extends Component {
 //setting state
 constructor(props) {
@@ -47,18 +48,18 @@ handleSubmit = e => {
 
   render() {
     return (
-      <div>
-          <h2>Add a new task</h2>
+      <div className='form-container'>
+          <h2 className='task-h2'>Add a new task</h2>
           <div>
               {this.state.description === '' ? 'invalid entry: enter a description' : 'description'}
           </div>
           <form onSubmit={this.handleSubmit}>
-            <input type="text" htmlFor="Description" maxLength="150" value={this.state.description} onChange={this.handleDescription}/>
-            <select value={this.state.done} onChange={this.handleDone}>
-                <option value={false}>Not Completed</option>
-                <option value={true}>Completed</option>
+            <input type="text" htmlFor="Description" placeholder="Enter Task Description Here" maxLength="150" value={this.state.description} onChange={this.handleDescription}/>
+            <select className="form-drop"  value={this.state.done} onChange={this.handleDone}>
+                <option className="form-btn" value={false}>Not Completed</option>
+                <option className="form-btn" value={true}>Completed</option>
             </select>
-            <button type="submit" htmlFor="Add">Submit</button>
+            <button className="form-btn" type="submit" htmlFor="Add">Submit</button>
           </form>
       </div>
     )

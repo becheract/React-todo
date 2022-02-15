@@ -1,0 +1,30 @@
+@import '../main.scss';
+
+.help-container {
+   text-align: center;
+   margin: auto auto;
+   background: #b4ae8e ;
+   width: fit-content;
+   height: fit-content;
+   border-radius: 10px;
+
+    h1{
+    font-family: $font;
+    padding: 10px;
+    }
+
+    p{
+        padding: 10px;
+    }
+
+    .text{
+        background: white;
+        border-radius: 10px;
+        margin: 10px;
+        padding: 20px;
+    }
+
+    img{
+        width: 300px;
+    }
+}
