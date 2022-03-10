@@ -1,20 +1,19 @@
-import React from "react";
+import {useState , useEffect} from "react";
 import uuid from 'react-uuid';
 import Task from "./Task/Task";
 import './Tasks.scss'
 import Form from '.././Tasks/Form/Form';
 
-class Tasks extends React.Component {
-	constructor(props) {
-		super(props);
+function Tasks () {
+	const [tasks,setTasks] = useState([])
+	//var to hold all the objects aka tasks
+	const [updatedTasks, setUpdatedTasks] = useState([]);
+	console.log(tasks)
 
-		this.state = {
-			tasks: []
-		}
-	}
 
-	componentDidMount() {
-		const tasks = [
+	useEffect(() => {
+		console.log("Mounted!")
+		const mountedTasks = [
 			{
 				id: uuid(),
 				description: "Walk the dog",
@@ -29,76 +28,78 @@ class Tasks extends React.Component {
 				id: uuid(),
 				description: "Finish the lab",
 				done: false
-			}
+			},
 		];
 
-		this.setState({ tasks: tasks });
+		setTasks(mountedTasks);
+	}, [])
+
+
+	const handleClearTasks = () => {
+		setTasks([]);
 	}
 
-	handleClearTasks = () => {
-		this.setState({ tasks: [] });
-	}
 
-
-	handleStatusChange = (id) => {
-		//var to hold all the objects aka tasks
-		let updatedTasks = this.state.tasks;
-		console.log(updatedTasks);
+	const handleStatusChange = (id) => {
+		
+		let updatedTasks = [...tasks]
 		//for every task in the var above
 		for( let task of updatedTasks) {
 			//check if the id that was in the parameter is equal to the task that was selected
 			if(task.id === id){
 				//change the status of the object to the opposite
-				task.done = !task.done
+				task.done = !task.done;
+				
 			}
 		}
 		//set the newly updated object to the state
-		this.setState({ tasks : updatedTasks})
+		setTasks(updatedTasks)
 	}
 
 
-	handleTaskRemove = (id) => {
+	const handleTaskRemove = (id) => {
 		//var to hold all the objects aka tasks
-		let updatedTasks = this.state.tasks.filter(
+		let updatedTasks = tasks.filter(
 			//take the indivdual task as a param, 
 			//if id isn't equal to the id then...
 			(task) => task.id !== id
 		);
 		//set the state of the task to 
-		this.setState({ tasks : updatedTasks });
+		setTasks(updatedTasks);
 	}
 
-	addTask = (t) => {
-		this.setState({ tasks : [...this.state.tasks, t],
-		}, () => {
-			console.log(t);
-		});
+	const addTask = (t) => {
+		const updatedTasks = [
+		...tasks, 
+		t
+		];
+		setTasks(updatedTasks);
 	}
 
-	render() {
+
 		return (
 			<>
 			<div className="Tasks-container">
 				<h2 className="SubTitle">These are the tasks:</h2>
 				<div className="item-container">
-					{this.state.tasks.map(
+					{tasks.map(
 						(task, index) => (
 							<Task
 								key={index}
 								task={task}
-								handleStatusChange={this.handleStatusChange}
-								handleTaskRemove={this.handleTaskRemove}
+								handleStatusChange={handleStatusChange}
+								handleTaskRemove={handleTaskRemove}
 							/>
 						)
 					)}
 				</div>
 				<hr />
-				<button className="Tasks-btn" onClick={this.handleClearTasks}>Clear Tasks</button>
-				<Form addTask={this.addTask}/>
+				<button className="Tasks-btn" onClick={handleClearTasks}>Clear Tasks</button>
+				<Form addTask={addTask}/>
 			</div>
 			</>
 		);
 	}
-}
+
 
 export default Tasks;

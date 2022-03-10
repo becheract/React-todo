@@ -1,61 +1,55 @@
-import React, { Component } from 'react'
+import React, { useState } from 'react'
 import uuid from 'react-uuid';
 import './Form.scss'
-export default class Form extends Component {
+export default function Form(props) {
 //setting state
-constructor(props) {
-    super(props);
-    this.state = {
-        description : '',
-        done : false,
-        errorMessage: null,
-        
-    }
-    this.handleDescription = this.handleDescription.bind(this);
+const [description, setDescription] = useState('');
+const [done, setDone] = useState(false);
+const [errorMessage, setErrorMessage] = useState(null);
 
- 
-}
-handleDescription = e => {
-    this.setState({ description : e.target.value})
+   
+
+const handleDescription = e => {
+    setDescription(e.target.value);
     console.log(e.target.value);
 
 };
 
-handleDone = e => {
-    this.setState({ done : e.target.value})
+const handleDone = e => {
+    setDone(e.target.value);
     console.log(e.target.value);
 };
 
-handleSubmit = e => {
+const handleSubmit = e => {
     e.preventDefault();
 
-    if(this.state.description === "")  {
-        this.setState({ errorMessage : alert("Enter Description")})
+    if(description === "")  {
+        setErrorMessage(alert("Enter Description"));
     }else{
        const newTask = {
        id: uuid(),
-       description: this.state.description,
-       done: this.state.done
+       description: description,
+       done: done
     };
     console.log(newTask);
-    this.props.addTask(newTask);
+    props.addTask(newTask);
 
-    this.setState({description : ''});
-    this.setState({done : false });
+    setDescription('');
+    setDone(false);
     }
 
 };
 
-  render() {
+  
     return (
       <div className='form-container'>
           <h2 className='task-h2'>Add a new task</h2>
           <div>
-              {this.state.description === '' ? 'invalid entry: enter a description' : 'description'}
+              {description === '' ? 'invalid entry: enter a description' : 'description'}
           </div>
-          <form onSubmit={this.handleSubmit}>
-            <input type="text" htmlFor="Description" placeholder="Enter Task Description Here" maxLength="150" value={this.state.description} onChange={this.handleDescription}/>
-            <select className="form-drop"  value={this.state.done} onChange={this.handleDone}>
+          <form onSubmit={handleSubmit}>
+            <input type="text" htmlFor="Description" placeholder="Enter Task Description Here" maxLength="150" value={description} onChange={handleDescription}/>
+            <select className="form-drop"  value={done} onChange={handleDone}>
                 <option className="form-btn" value={false}>Not Completed</option>
                 <option className="form-btn" value={true}>Completed</option>
             </select>
@@ -64,4 +58,4 @@ handleSubmit = e => {
       </div>
     )
   }
-}
+
