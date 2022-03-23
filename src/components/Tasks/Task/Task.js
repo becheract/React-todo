@@ -17,8 +17,10 @@ function Task(props) {
 
 	if(props.task.done === true){
 		statusColor = 'green';
-	}else {
+	}else if (props.task.done === false) {
 		statusColor = 'red'
+	}else {
+		statusColor = 'green'
 	}
 
 	const statusStyles = {
