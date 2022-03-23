@@ -1,13 +1,22 @@
 import React, { useState } from 'react'
 import uuid from 'react-uuid';
 import './Form.scss'
+import { addTasks } from './../../../redux/tasksSlice';
+import { useSelector, useDispatch } from 'react-redux';
+import api from '../../../Api/index';
+
+
 export default function Form(props) {
+//redux useSelector hook
+const tasks = useSelector((state) => state.tasks.list);
+//redux dispatch hook
+const dispatch = useDispatch()
 //setting state
 const [description, setDescription] = useState('');
 const [done, setDone] = useState(false);
 const [errorMessage, setErrorMessage] = useState(null);
+const [saving, setSaving] = useState(false);
 
-   
 
 const handleDescription = e => {
     setDescription(e.target.value);
@@ -22,7 +31,7 @@ const handleDone = e => {
 
 const handleSubmit = e => {
     e.preventDefault();
-
+    setSaving(true)
     if(description === "")  {
         setErrorMessage(alert("Enter Description"));
     }else{
@@ -31,11 +40,20 @@ const handleSubmit = e => {
        description: description,
        done: done
     };
-    console.log(newTask);
-    props.addTask(newTask);
+    api.post('/tasks', newTask)
+    .then((res) => {
+        if(res.status === 201) {
+          dispatch(addTasks(newTask));
+          setDescription('');
+          setDone(false);
+          setErrorMessage(null)
+          setSaving(false)
+        }
+    }).catch((err) => {
+        alert(err);
+    })
 
-    setDescription('');
-    setDone(false);
+
     }
 
 };
@@ -45,7 +63,10 @@ const handleSubmit = e => {
       <div className='form-container'>
           <h2 className='task-h2'>Add a new task</h2>
           <div>
-              {description === '' ? 'invalid entry: enter a description' : 'description'}
+              {description === '' ? 'Enter a description' : 'description'}
+              {saving && ( 
+               <div className='saving'>Saving...</div> 
+              )}
           </div>
           <form onSubmit={handleSubmit}>
             <input type="text" htmlFor="Description" placeholder="Enter Task Description Here" maxLength="150" value={description} onChange={handleDescription}/>

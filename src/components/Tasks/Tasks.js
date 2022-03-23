@@ -7,8 +7,10 @@ import Form from '.././Tasks/Form/Form';
 import { useSelector, useDispatch } from 'react-redux';
 //importing the reducer from redux
 import { setTasks,clearTask, changeTaskStatus, removeTask, addTasks } from './../../redux/tasksSlice';
-
+import api from '../../Api/index';
+import LoadingIcon from "../../assets/LoadingIcon";
 function Tasks () {
+	const [loading, setLoading] = useState(true); 
 	//redux useSelector hook
 	const tasks = useSelector((state) => state.tasks.list);
 	//redux dispatch hook
@@ -16,35 +18,34 @@ function Tasks () {
 	//var to hold all the objects aka tasks
 	const [updatedTasks, setUpdatedTasks] = useState([]);
 	
-	console.log(tasks)
 
 
 	useEffect(() => {
 		console.log("Mounted!")
-		const mountedTasks = [
-			{
-				id: uuid(),
-				description: "Walk the dog",
-				done: true
-			},
-			{
-				id: uuid(),
-				description: "Wash the car",
-				done: false
-			},
-			{
-				id: uuid(),
-				description: "Finish the lab",
-				done: false
-			},
-		];
+		api.get('/tasks')
+		.then((res) => {
+			if(res.status === 200){
+				console.log(res)
+				dispatch(setTasks(res.data));
+				setLoading(false); 
+			}
+		}).catch((err) => {
+			alert(err);
+		});
 
-		dispatch(setTasks(mountedTasks))
 	}, [])
 
 
 	const handleClearTasks = () => {
-		dispatch(clearTask([]))
+		api.delete(`/tasks/all`)
+		.then(res => {
+			if(res.status === 200){
+				dispatch(clearTask([]))
+			}
+		}).catch((err) => {
+			alert(err.message)
+		})
+
 	}
 
 
@@ -66,6 +67,9 @@ function Tasks () {
 		return (
 			<>
 			<div className="Tasks-container">
+			{loading && ( 
+  				<LoadingIcon/>
+			)}
 				<h2 className="SubTitle">These are the tasks:</h2>
 				<div className="item-container">
 					{tasks.map(
