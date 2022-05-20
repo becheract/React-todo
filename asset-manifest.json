@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/React-todo/static/css/main.a2bade1f.css",
-    "main.js": "/React-todo/static/js/main.39c67ba7.js",
+    "main.js": "/React-todo/static/js/main.ab673b63.js",
     "static/js/787.ac4b9f7c.chunk.js": "/React-todo/static/js/787.ac4b9f7c.chunk.js",
     "static/media/bao-charity-1.png": "/React-todo/static/media/bao-charity-1.080bddfc5b23e268d56e.png",
     "index.html": "/React-todo/index.html",
     "main.a2bade1f.css.map": "/React-todo/static/css/main.a2bade1f.css.map",
-    "main.39c67ba7.js.map": "/React-todo/static/js/main.39c67ba7.js.map",
+    "main.ab673b63.js.map": "/React-todo/static/js/main.ab673b63.js.map",
     "787.ac4b9f7c.chunk.js.map": "/React-todo/static/js/787.ac4b9f7c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a2bade1f.css",
-    "static/js/main.39c67ba7.js"
+    "static/js/main.ab673b63.js"
   ]
 }
