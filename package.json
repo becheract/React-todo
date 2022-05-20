@@ -1,5 +1,5 @@
 {
-  "homepage": "http://Pepsiman715.github.io/React-todo",
+  "homepage": "https://Pepsiman715.github.io/React-todo",
   "name": "todo-app",
   "author": {
     "name": "Bechera",
@@ -50,6 +50,7 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^3.2.3"
+    "gh-pages": "^3.2.3",
+    "mini-css-extract-plugin": "2.4.5"
   }
 }
