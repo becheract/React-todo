@@ -13,10 +13,10 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
     <HashRouter>
-    <Routes>
-      <Route path="/React-Web-App" element={<App />} />
-      <Route path="/help" element={<Help />} />
-    </Routes>
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="/help" element={<Help />} />
+      </Routes>
     </HashRouter>
     </Provider>
   </React.StrictMode>
