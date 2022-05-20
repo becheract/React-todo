@@ -1,12 +1,12 @@
 import './Task.scss'
 import {MdTaskAlt} from 'react-icons/md'
-import { setTasks,clearTask, changeTaskStatus, removeTask, addTasks } from './../../../redux/tasksSlice';
+import { changeTaskStatus, removeTask } from './../../../redux/tasksSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import api from '../../../Api/index';
 function Task(props) {
 
 	//redux useSelector hook
-	const tasks = useSelector((state) => state.tasks.list);
+	useSelector((state) => state.tasks.list);
 	//redux dispatch hook
 	const dispatch = useDispatch()
 

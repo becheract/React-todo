@@ -8,7 +8,7 @@ import api from '../../../Api/index';
 
 export default function Form(props) {
 //redux useSelector hook
-const tasks = useSelector((state) => state.tasks.list);
+useSelector((state) => state.tasks.list);
 //redux dispatch hook
 const dispatch = useDispatch()
 //setting state
@@ -33,7 +33,7 @@ const handleSubmit = e => {
     e.preventDefault();
     setSaving(true)
     if(description === "")  {
-        setErrorMessage(alert("Enter Description"));
+        setErrorMessage("Enter Description");
     }else{
        const newTask = {
        id: uuid(),
@@ -49,8 +49,8 @@ const handleSubmit = e => {
           setErrorMessage(null)
           setSaving(false)
         }
-    }).catch((err) => {
-        alert(err);
+    }).catch(() => {
+        alert(errorMessage);
     })
 
 

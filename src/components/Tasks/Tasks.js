@@ -1,5 +1,5 @@
 import {useState , useEffect} from "react";
-import uuid from 'react-uuid';
+
 import Task from "./Task/Task";
 import './Tasks.scss'
 import Form from '.././Tasks/Form/Form';
@@ -67,9 +67,10 @@ function Tasks () {
 		return (
 			<>
 			<div className="Tasks-container">
-			{loading && ( 
+			{loading ? ( 
   				<LoadingIcon/>
-			)}
+			) : ( 
+				<>
 				<h2 className="SubTitle">These are the tasks:</h2>
 				<div className="item-container">
 					{tasks.map(
@@ -81,6 +82,8 @@ function Tasks () {
 						)
 					)}
 				</div>
+				</>
+				) }
 				<hr />
 				<button className="Tasks-btn" onClick={handleClearTasks}>Clear Tasks</button>
 				<Form/>
