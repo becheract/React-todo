@@ -5,19 +5,19 @@ import App from './App';
 import Help from './components/Help/Help'
 import reportWebVitals from './reportWebVitals';
 import './index.scss'
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, HashRouter } from 'react-router-dom';
 import { store } from './redux/store';
 import { Provider } from 'react-redux';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-    <BrowserRouter>
+    <HashRouter>
     <Routes>
       <Route path="/React-Web-App" element={<App />} />
       <Route path="/help" element={<Help />} />
     </Routes>
-    </BrowserRouter>
+    </HashRouter>
     </Provider>
   </React.StrictMode>
 ,
